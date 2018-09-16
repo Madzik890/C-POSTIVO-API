@@ -39,8 +39,8 @@ void initPostivoAPI()
   soap_ssl_init();//init SSL
   soap_init(g_soap);//init soap lib
 
-  soap_set_imode(g_soap, SOAP_C_UTFSTRING); //input
-  soap_set_omode(g_soap, SOAP_C_UTFSTRING); //output?
+  soap_set_imode(g_soap, SOAP_C_UTFSTRING);//input
+  soap_set_omode(g_soap, SOAP_C_UTFSTRING);//output
 
   if (soap_ssl_server_context(g_soap, SOAP_SSL_NO_AUTHENTICATION, NULL, NULL, NULL, NULL, NULL, NULL, NULL))//init SSL with no AUTHENTICATION
   {
@@ -54,9 +54,11 @@ void initPostivoAPI()
 /// </summary>
 void closePostivoAPI()
 {
-  soap_end(g_soap);     // delete deserialized temp data
-  soap_destroy(g_soap); // delete deserialized data
-  soap_free(g_soap);    // free context
+  if(s_endAction != NULL)//if endAction is not empty 
+    free(s_endAction);//release memory
+  soap_end(g_soap);     //delete deserialized temp data
+  soap_destroy(g_soap); //delete deserialized data
+  soap_free(g_soap);    //free context
 }
 
 /// <summary>

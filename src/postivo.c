@@ -1,5 +1,6 @@
 #include "postivoAPI.h"
 #include "userLog.h"
+#include "clientOptions.h"
 #include <string.h>//strcpy
 
 void helpArgv();
@@ -16,7 +17,14 @@ int main(int argc, char ** argv)
     helpArgv();
     exit(1);//close
   }
+  else
+  if(argc == 2 && (!strcmp( argv[ 1 ], "-ccf" ) || !strcmp( argv[ 1 ], "-gCF" ) || !strcmp( argv[ 1 ], "-createConfigFiles" )))//get price
+  {
+    createClientOptions();
+    exit(1);
+  } 
 
+  loadClientOptions();
   struct userLog user = getUserLog();
   initPostivoAPI();
 
@@ -53,4 +61,5 @@ void helpArgv()
   printf("   -gb              Get accout balance. \n");
   printf("   -gp              Get price of shipment. \n");
   printf("   -gcp             Get config profiles. \n");
+  printf("   -ccf             Create a config file to make connection with other servers. \n");
 }
