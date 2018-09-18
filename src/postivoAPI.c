@@ -27,7 +27,7 @@ void printErrorMessage(const char * errorCode)
 {
   printf("---------------------------------------------------\n");//for transparency
   printf("The request has been sent but something went wrong.\n");
-  printf("Error code: %s\n",errorCode);
+  printf("[Error]: %s\n",errorCode);
 }
 
 /// <summary>
