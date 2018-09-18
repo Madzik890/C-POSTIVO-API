@@ -38,7 +38,7 @@ void loadDocumentFile(const char * fileLocation,char * fileTitle, struct ns1__Do
 {
   FILE * m_file;
   struct ns1__DocumentFile m_document;
-  long l_lenght;//lenght in file
+  long l_length;//lenght in file
 
   m_document.file_USCOREname = fileTitle;//title
 
@@ -46,16 +46,16 @@ void loadDocumentFile(const char * fileLocation,char * fileTitle, struct ns1__Do
   if(m_file)
   {
     fseek (m_file, 0, SEEK_END);//check end of file
-    l_lenght = ftell(m_file);//assign this variable lenght of the file
+    l_length = ftell(m_file);//assign this variable lenght of the file
     fseek(m_file, 0, SEEK_SET);
 
-    m_document.file_USCOREstream = malloc(sizeof(char) * l_lenght);
-    fread(m_document.file_USCOREstream, sizeof(char), l_lenght, m_file);//read binary in to the file
-    char * s_encodedStream = base64encode(m_document.file_USCOREstream, l_lenght);//encode the file
+    m_document.file_USCOREstream = malloc(sizeof(char) * l_length);
+    fread(m_document.file_USCOREstream, sizeof(char), l_length, m_file);//read binary in to the file
+    char * s_encodedStream = base64encode(m_document.file_USCOREstream, l_length);//encode the file
     free(m_document.file_USCOREstream);
 
-    m_document.file_USCOREstream = malloc(sizeof(char) * strlen(s_encodedStream) + 1);//allocating the place in the memory
-    m_document.file_USCOREstream = s_encodedStream;
+    m_document.file_USCOREstream = malloc(sizeof(char) * strlen(s_encodedStream));//allocating the place in the memory
+    strcpy(m_document.file_USCOREstream, s_encodedStream);
 
     fclose(m_file);//close the file
   }

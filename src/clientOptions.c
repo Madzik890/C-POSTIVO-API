@@ -20,7 +20,6 @@ void setOptionsParam(char line[50])
   {
     strncpy(s_param, line + 21, strlen(line) - 21);
     s_endAction = malloc(strlen(s_param) + 1);
-    //s_endAction = s_param;
     strcpy(s_endAction, s_param);
   }
 }
