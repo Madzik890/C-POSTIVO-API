@@ -10,6 +10,7 @@
 #include "documentFile.h"//used in: postDispatch
 #include "recipient.h"
 #include "shipments.h"//used in: postGetDispatchStatus
+#include "senders.h"
 #include <string.h>//strcmp
 
 /// <global instances>
@@ -90,7 +91,6 @@ void postDispatch(char * login, char * password)
   m_arrayRecipients.__ptr = calloc(1, sizeof(struct ns1__Recipient*));//allocating the memory to only a one recipient
   m_arrayRecipients.__size = 1;//set size the array to only one
   m_arrayRecipients.__ptr[0] = &m_recipient;
-
 
   struct ns2__dispatchResponse m_dispatchStatus;
   if(soap_call_ns2__dispatch(g_soap, s_endAction, s_soapAction, login, password, "1", &m_arrayDocuments, &m_arrayRecipients, 0, &m_dispatchStatus) == SOAP_OK)//try execute the soap method
@@ -253,9 +253,21 @@ void postGetConfigProfiles(char * login, char * password)
   soap_print_fault(g_soap, stderr);
 }
 
-void postGetSenders()
+void postGetSenders(char * login, char * password)
 {
-
+  struct ns2__getSendersResponse m_sendersStatus;
+  if(soap_call_ns2__getSenders(g_soap, s_endAction, s_soapAction, login, password, &m_sendersStatus) == SOAP_OK)
+  {
+    if(!strcmp(m_sendersStatus.return_->result, "OK"))//if is no error
+    {
+      printf("--------------------------\n");//for transparency
+      printf("Successfull\n");
+      printf("The status has been received.\n");
+      printfSenders(m_sendersStatus.return_->senders);
+    }
+    else
+      printErrorMessage(m_sendersStatus.return_->result_USCOREdescription);
+  }
 }
 
 void postGetCertificate()

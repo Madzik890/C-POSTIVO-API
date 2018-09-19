@@ -44,8 +44,12 @@ int main(int argc, char ** argv)
 
     if(!strcmp( argv[ i ], "-gcp" ) || !strcmp( argv[ i ], "-gCP" ) || !strcmp( argv[ i ], "-getConfigProfiles" ))//get price
       postGetConfigProfiles(user.s_login, user.s_password);
-  }
 
+    if(!strcmp( argv[ i ], "-gs" ) || !strcmp( argv[ i ], "-gS" ) || !strcmp( argv[ i ], "-getSenders" ))//get price
+      postGetSenders(user.s_login, user.s_password);
+  }
+  
+  freeUser(&user);
   closePostivoAPI();
 
   return 0;

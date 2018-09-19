@@ -18,7 +18,7 @@ void postGetDispatchStatus(char * login, char * password);
 void postGetBalance(char * login, char * password);
 void postGetPrice(char * login, char * password);
 void postGetConfigProfiles(char * login, char * password);
-void postGetSenders();
+void postGetSenders(char * login, char * password);
 void postGetCertificate();
 void postAddSender();
 void postVerifySender();

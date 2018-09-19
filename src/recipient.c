@@ -27,10 +27,18 @@ void createRecipient(struct ns1__Recipient * recipient)
   int i_id;
   if(l_sourceAnswer != 3)
   {
-    printf("Enter the recipient's id :");
+    printf("Enter the recipient's id:");
     scanf("%d", &i_id);//waits for user input
     m_recipient.id = malloc(sizeof(int) * 1);
     m_recipient.id = &i_id;
+
+    m_recipient.recipient_USCOREname = NULL;
+    m_recipient.recipient_USCOREpost_USCOREcode = NULL;
+    m_recipient.recipient_USCOREcity = NULL;
+    m_recipient.recipient_USCOREaddress_USCOREprefix = NULL;
+    m_recipient.recipient_USCOREaddress = NULL;
+    m_recipient.recipient_USCOREhome_USCOREnumber = NULL;
+    m_recipient.recipient_USCOREflat_USCOREnumber = NULL;
   }
   /// </assing the id>
 
@@ -76,6 +84,8 @@ void createRecipient(struct ns1__Recipient * recipient)
 
 void freeRecipient(struct ns1__Recipient * recipient)
 {
+  free(recipient->id);//id 
+  free(recipient->source);//inline, group or book
   free(recipient->recipient_USCOREname);//release name
   free(recipient->recipient_USCOREpost_USCOREcode);//release code
   free(recipient->recipient_USCOREcity);//release code
@@ -122,12 +132,10 @@ void assingSource(const unsigned int answer, char ** stringOut)
 /// <return> user inputs </return>
 void assingString(const char * consoleWrite, char ** stringOut)
 {
-  char * s_string = malloc(sizeof(char) * STRING_SIZE);
+  (*stringOut) = malloc(sizeof(char) * STRING_SIZE);
   printf("%s",consoleWrite);
-  fgets(s_string, STRING_SIZE - 1, stdin);
-  removeNewLine(s_string);
-
-  (*stringOut) = s_string;
+  fgets((*stringOut), STRING_SIZE - 1, stdin);
+  removeNewLine((*stringOut));
 }
 
 /// <summary>
