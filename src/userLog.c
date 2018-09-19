@@ -31,3 +31,9 @@ struct userLog getUserLog()
 
   return m_user;//return a user data
 }
+
+void freeUser(struct userLog * user)
+{
+  free(user->s_login);
+  free(user->s_password);
+}

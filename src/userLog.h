@@ -11,6 +11,7 @@ struct userLog
   char * s_password;
 };
 
-struct userLog  getUserLog();
+struct userLog getUserLog();
+void freeUser(struct userLog * user);
 
 #endif
