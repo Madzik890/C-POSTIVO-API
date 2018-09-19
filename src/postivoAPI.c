@@ -253,6 +253,14 @@ void postGetConfigProfiles(char * login, char * password)
   soap_print_fault(g_soap, stderr);
 }
 
+/// <summary>
+/// Connects to service and gets all senders.
+/// User must inputes a login and a password.
+/// When gets any error, returns code.
+/// List of error codes: https://postivo.pl/docs/Dokumentacja_API_Postivo.pdf
+/// </summary>
+/// <param name = "login"> Login </param>
+/// <param name = "password"> Password </param>
 void postGetSenders(char * login, char * password)
 {
   struct ns2__getSendersResponse m_sendersStatus;
