@@ -42,10 +42,10 @@ int main(int argc, char ** argv)
     if(!strcmp( argv[ i ], "-gp" ) || !strcmp( argv[ i ], "-gP" ) || !strcmp( argv[ i ], "-getPrice" ))//get price
       postGetPrice(user.s_login, user.s_password);
 
-    if(!strcmp( argv[ i ], "-gcp" ) || !strcmp( argv[ i ], "-gCP" ) || !strcmp( argv[ i ], "-getConfigProfiles" ))//get price
+    if(!strcmp( argv[ i ], "-gcp" ) || !strcmp( argv[ i ], "-gCP" ) || !strcmp( argv[ i ], "-getConfigProfiles" ))//get config profiles
       postGetConfigProfiles(user.s_login, user.s_password);
 
-    if(!strcmp( argv[ i ], "-gs" ) || !strcmp( argv[ i ], "-gS" ) || !strcmp( argv[ i ], "-getSenders" ))//get price
+    if(!strcmp( argv[ i ], "-gs" ) || !strcmp( argv[ i ], "-gS" ) || !strcmp( argv[ i ], "-getSenders" ))//get senders
       postGetSenders(user.s_login, user.s_password);
   }
   
@@ -66,4 +66,5 @@ void helpArgv()
   printf("   -gp              Get price of shipment. \n");
   printf("   -gcp             Get config profiles. \n");
   printf("   -ccf             Create a config file to make connection with other servers. \n");
+  printf("   -gs              Get list of senders. \n");
 }
