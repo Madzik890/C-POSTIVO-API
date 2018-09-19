@@ -5,6 +5,7 @@
 
 void inputFilePath(char ** filePath, char ** fileTitle);
 void loadDocumentFile(const char * fileLocation, char * fileTitle, struct ns1__DocumentFile * document);
+void saveDocumentFile(const char * fileLocation, const char * fileContent);
 void freeDocumentFile(struct ns1__DocumentFile * document);
 
 #endif

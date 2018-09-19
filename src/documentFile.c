@@ -34,7 +34,7 @@ void inputFilePath(char ** filePath, char ** fileTitle)
 /// </summary>
 /// <param name = "fileLocation"> Contain a location to file. <param>
 /// <param name = "document"> Pointer to object which contains a file stream and a title. <param>
-void loadDocumentFile(const char * fileLocation,char * fileTitle, struct ns1__DocumentFile * document)
+void loadDocumentFile(const char * fileLocation, char * fileTitle, struct ns1__DocumentFile * document)
 {
   FILE * m_file;
   struct ns1__DocumentFile m_document;
@@ -66,6 +66,24 @@ void loadDocumentFile(const char * fileLocation,char * fileTitle, struct ns1__Do
     exit(1);
   }
   (*document) = m_document;
+}
+
+/// <summary>
+/// Decodes and saves a encoded stream to file.
+/// </summary>
+/// <param name = "fileLocation"> Location and name save file </param>
+/// <param name = "fileContent"> Encoded stream </param>
+void saveDocumentFile(const char * fileLocation, const char * fileContent)
+{
+  FILE * m_file;
+  m_file = fopen(fileLocation, "ab+");
+  if(m_file)
+  {
+    char * s_decodedStream = base64encode(fileContent, strlen(fileContent));
+    fwrite(s_decodedStream, 1, strlen(s_decodedStream) + 1, m_file);
+
+    fclose(m_file);
+  }
 }
 
 /// <summary>
