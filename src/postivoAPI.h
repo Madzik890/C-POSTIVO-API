@@ -19,7 +19,7 @@ void postGetBalance(char * login, char * password);
 void postGetPrice(char * login, char * password);
 void postGetConfigProfiles(char * login, char * password);
 void postGetSenders(char * login, char * password);
-void postGetCertificate();
+void postGetCertificate(char * login, char * password);
 void postAddSender();
 void postVerifySender();
 void postVerifySenderID();

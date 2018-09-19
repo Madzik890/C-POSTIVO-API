@@ -12,7 +12,6 @@ void printfSenders(struct ArrayOfSenders * arrayOfSenders)
   {
     for(int i = 0; i <= arrayOfSenders->__size; i++)
     {
-      printf("xd %d \n", arrayOfSenders->__size);
       printfSingleSender(arrayOfSenders->__ptr[i]);//print all information about a sender
     }
   }

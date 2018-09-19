@@ -47,6 +47,9 @@ int main(int argc, char ** argv)
 
     if(!strcmp( argv[ i ], "-gs" ) || !strcmp( argv[ i ], "-gS" ) || !strcmp( argv[ i ], "-getSenders" ))//get senders
       postGetSenders(user.s_login, user.s_password);
+
+    if(!strcmp( argv[ i ], "-gc" ) || !strcmp( argv[ i ], "-gC" ) || !strcmp( argv[ i ], "-setCertificate" ))//get certificate
+      postGetCertificate(user.s_login, user.s_password);
   }
   
   freeUser(&user);
@@ -68,3 +71,4 @@ void helpArgv()
   printf("   -ccf             Create a config file to make connection with other servers. \n");
   printf("   -gs              Get list of senders. \n");
 }
+

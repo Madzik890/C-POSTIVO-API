@@ -278,9 +278,55 @@ void postGetSenders(char * login, char * password)
   }
 }
 
-void postGetCertificate()
+/// <summary>
+/// Generates a certificate which is confirmation 
+/// of sending and receiving parcels.
+/// Also writes a received certificate file to disk.
+/// User must inputes a login and a password.
+/// When gets any error, returns code.
+/// List of error codes: https://postivo.pl/docs/Dokumentacja_API_Postivo.pdf
+/// </summary>
+/// <param name = "login"> Login </param>
+/// <param name = "password"> Password </param>
+void postGetCertificate(char * login, char * password)
 {
+  char * dispatchID;
+  getShipmentID(&dispatchID);
 
+  int i_confirmationType = 0;  
+  printf("1)Confirmation of sending the parcel \n");
+  printf("2)Confirmation of receipt of the parcel by the addressee \n");
+  printf("Enter the type of confirmation:");
+  scanf("%d", &i_confirmationType);
+
+  struct ns2__getCertificateResponse m_certificateStatus;
+  if(soap_call_ns2__getCertificate(g_soap, s_endAction, s_soapAction, login, password, dispatchID, i_confirmationType, &m_certificateStatus))
+  {
+    if(!strcmp(m_certificateStatus.return_->result, "OK"))//if is no error
+    {
+      printf("--------------------------\n");//for transparency
+      if(m_certificateStatus.return_->cert_USCOREavailable == 1)//successfull 
+      {
+        printf("Successfull \n");
+        printf("Confirmation has been generated. \n");
+
+        char * s_certificateLocation = malloc(sizeof(char) * 255);//allocate place in memory
+        printf("Enter the place where the certification will be generate:");
+        scanf("%s", s_certificateLocation);//get location to save a file
+
+        saveDocumentFile(s_certificateLocation, m_certificateStatus.return_->cert_USCOREcontent);//decode and save document 
+
+        free(s_certificateLocation);//release memory
+      }
+      else//error
+      {
+        printf("Error \n");
+        printf("Confirmation has not been generated");
+      }
+    }
+    else
+      printErrorMessage(m_certificateStatus.return_->result_USCOREdescription);//connection error
+  }
 }
 
 void postAddSender()
