@@ -81,5 +81,6 @@ void helpArgv()
   printf("   -gs              Get list of senders. \n");
   printf("   -as              Add sender to contacts. \n");
   printf("   -vs              Verify a sender. \n");
+  printf("   -rs             Remove a sender.  \n");
 }
 
