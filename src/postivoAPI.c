@@ -334,8 +334,11 @@ void postGetCertificate(char * login, char * password)
     soap_print_fault(g_soap, stderr);
 }
 /// <summary>
-/// 
+/// Adds sender to the account contacts.
 /// Using this function, user accepting the Postivo Rules(Gets 2.00 zł netto from user account).
+/// User must inputes a login and a password.
+/// When gets any error, returns code.
+/// List of error codes: https://postivo.pl/docs/Dokumentacja_API_Postivo.pdf
 /// </summary>
 /// <param name = "login"> Login </param>
 /// <param name = "password"> Password </param>
@@ -360,12 +363,44 @@ void postAddSender(char * login, char * password)
     soap_print_fault(g_soap, stderr);
 }
 
-void postVerifySender()
+/// <summary>
+/// Verifies a sender via technical code. 
+/// To get technical code, must write to Postivo.
+/// If Postivo accept sender, sends this code via post.
+/// User must inputes a login and a password.
+/// When gets any error, returns code.
+/// List of error codes: https://postivo.pl/docs/Dokumentacja_API_Postivo.pdf
+/// </summary>
+/// <param name = "login"> Login </param>
+/// <param name = "password"> Password </param>
+void postVerifySender(char * login, char * password)
 {
+  char * s_verifyCode = malloc(sizeof(char) * 255);
+  int i_senderID;
 
+  printf("Enter the sender ID:");
+  scanf("%d", &i_senderID);
+  printf("Enter the verify code:");
+  scanf("%s", s_verifyCode);
+
+  struct ns2__verifySenderResponse m_verifyStatus;
+  if(soap_call_ns2__verifySender(g_soap, s_endAction, s_soapAction, login, password, i_senderID, s_verifyCode, &m_verifyStatus) == SOAP_OK)
+  {
+    if(!strcmp(m_verifyStatus.return_->result, "OK"))//if is no error
+    {
+      printf("--------------------------\n");//for transparency
+      printf("Successfull \n");
+      printf("Sender has been verified. \n");
+    }
+    else
+      printErrorMessage(m_verifyStatus.return_->result_USCOREdescription);//connection error
+  }
+  else
+    soap_print_fault(g_soap, stderr);
+  
+  free(s_verifyCode);
 }
 
-void postVerifySenderID()
+void postRemoveSender(char * login, char * password)
 {
-
 }

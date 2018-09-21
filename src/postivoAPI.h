@@ -21,8 +21,8 @@ void postGetConfigProfiles(char * login, char * password);
 void postGetSenders(char * login, char * password);
 void postGetCertificate(char * login, char * password);
 void postAddSender(char * login, char * password);
-void postVerifySender();
-void postVerifySenderID();
+void postVerifySender(char * login, char * password);
+void postRemoveSender(char * login, char * password);
 /// </functions>
 
 #endif

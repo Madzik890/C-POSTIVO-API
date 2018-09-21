@@ -48,11 +48,14 @@ int main(int argc, char ** argv)
     if(!strcmp( argv[ i ], "-gs" ) || !strcmp( argv[ i ], "-gS" ) || !strcmp( argv[ i ], "-getSenders" ))//get senders
       postGetSenders(user.s_login, user.s_password);
 
-    if(!strcmp( argv[ i ], "-gc" ) || !strcmp( argv[ i ], "-gC" ) || !strcmp( argv[ i ], "-setCertificate" ))//get certificate
+    if(!strcmp( argv[ i ], "-gc" ) || !strcmp( argv[ i ], "-gC" ) || !strcmp( argv[ i ], "-setCertificate" ))//set certificate
       postGetCertificate(user.s_login, user.s_password);
 
-    if(!strcmp( argv[ i ], "-as" ) || !strcmp( argv[ i ], "-aS" ) || !strcmp( argv[ i ], "-addSender" ))//get certificate
+    if(!strcmp( argv[ i ], "-as" ) || !strcmp( argv[ i ], "-aS" ) || !strcmp( argv[ i ], "-addSender" ))//add sender
       postAddSender(user.s_login, user.s_password);
+
+     if(!strcmp( argv[ i ], "-vs" ) || !strcmp( argv[ i ], "-vS" ) || !strcmp( argv[ i ], "-verifySender" ))//verify certificate
+      postVerifySender(user.s_login, user.s_password);
   }
   
   freeUser(&user);
@@ -74,5 +77,6 @@ void helpArgv()
   printf("   -ccf             Create a config file to make connection with other servers. \n");
   printf("   -gs              Get list of senders. \n");
   printf("   -as              Add sender to contacts. \n");
+  printf("   -vs              Verify a sender. \n");
 }
 
