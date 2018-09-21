@@ -20,7 +20,7 @@ void postGetPrice(char * login, char * password);
 void postGetConfigProfiles(char * login, char * password);
 void postGetSenders(char * login, char * password);
 void postGetCertificate(char * login, char * password);
-void postAddSender();
+void postAddSender(char * login, char * password);
 void postVerifySender();
 void postVerifySenderID();
 /// </functions>

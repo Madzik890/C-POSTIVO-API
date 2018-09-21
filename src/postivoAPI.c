@@ -250,7 +250,8 @@ void postGetConfigProfiles(char * login, char * password)
     else
       printErrorMessage(m_configProfilesStatus.return_->result_USCOREdescription);
   }
-  soap_print_fault(g_soap, stderr);
+  else
+    soap_print_fault(g_soap, stderr);
 }
 
 /// <summary>
@@ -276,6 +277,8 @@ void postGetSenders(char * login, char * password)
     else
       printErrorMessage(m_sendersStatus.return_->result_USCOREdescription);
   }
+  else
+    soap_print_fault(g_soap, stderr);
 }
 
 /// <summary>
@@ -327,11 +330,34 @@ void postGetCertificate(char * login, char * password)
     else
       printErrorMessage(m_certificateStatus.return_->result_USCOREdescription);//connection error
   }
+  else
+    soap_print_fault(g_soap, stderr);
 }
-
-void postAddSender()
+/// <summary>
+/// 
+/// Using this function, user accepting the Postivo Rules(Gets 2.00 zł netto from user account).
+/// </summary>
+/// <param name = "login"> Login </param>
+/// <param name = "password"> Password </param>
+void postAddSender(char * login, char * password)
 {
+  struct ns1__SenderData m_senderData;
+  createSender(&m_senderData);
 
+  struct ns2__addSenderResponse m_senderStatus;
+  if(soap_call_ns2__addSender(g_soap, s_endAction, s_soapAction, login, password, &m_senderData, 1, &m_senderStatus) == SOAP_OK)
+  {
+    if(!strcmp(m_senderStatus.return_->result, "OK"))//if is no error
+    {
+      printf("--------------------------\n");//for transparency
+      printf("Successfull \n");
+      printf("Sender has been added. \n");
+    }
+    else
+      printErrorMessage(m_senderStatus.return_->result_USCOREdescription);//connection error
+  }
+  else
+    soap_print_fault(g_soap, stderr);
 }
 
 void postVerifySender()

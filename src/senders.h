@@ -3,6 +3,7 @@
 
 #include "soap/soapH.h"
 
+void createSender(struct ns1__SenderData * sender);
 void printfSenders(struct ArrayOfSenders * arrayOfSenders);
 
 #endif
