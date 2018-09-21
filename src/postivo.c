@@ -54,8 +54,11 @@ int main(int argc, char ** argv)
     if(!strcmp( argv[ i ], "-as" ) || !strcmp( argv[ i ], "-aS" ) || !strcmp( argv[ i ], "-addSender" ))//add sender
       postAddSender(user.s_login, user.s_password);
 
-     if(!strcmp( argv[ i ], "-vs" ) || !strcmp( argv[ i ], "-vS" ) || !strcmp( argv[ i ], "-verifySender" ))//verify certificate
+    if(!strcmp( argv[ i ], "-vs" ) || !strcmp( argv[ i ], "-vS" ) || !strcmp( argv[ i ], "-verifySender" ))//verify sender
       postVerifySender(user.s_login, user.s_password);
+
+    if(!strcmp( argv[ i ], "-rs" ) || !strcmp( argv[ i ], "-rS" ) || !strcmp( argv[ i ], "-removeSender" ))//remove sender
+      postRemoveSender(user.s_login, user.s_password);
   }
   
   freeUser(&user);

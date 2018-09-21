@@ -401,6 +401,32 @@ void postVerifySender(char * login, char * password)
   free(s_verifyCode);
 }
 
+/// <summary>
+/// Removes a sender from user contacts.
+/// User must inputes a login and a password.
+/// When gets any error, returns code.
+/// List of error codes: https://postivo.pl/docs/Dokumentacja_API_Postivo.pdf
+/// </summary>
+/// <param name = "login"> Login </param>
+/// <param name = "password"> Password </param>
 void postRemoveSender(char * login, char * password)
 {
+  int i_senderID;
+  printf("Enter the sender ID to remove:");
+  scanf("%d", &i_senderID);
+
+  struct ns2__removeSenderResponse m_removeStatus;
+  if(soap_call_ns2__removeSender(g_soap, s_endAction, s_soapAction, login, password, i_senderID, &m_removeStatus) == SOAP_OK)
+  {
+    if(!strcmp(m_removeStatus.return_->result, "OK"))//if is no error
+    {
+      printf("--------------------------\n");//for transparency
+      printf("Successfull \n");
+      printf("Sender has been verified. \n");
+    }
+    else
+      printErrorMessage(m_removeStatus.return_->result_USCOREdescription);//connection error
+  }
+  else
+    soap_print_fault(g_soap, stderr);
 }
