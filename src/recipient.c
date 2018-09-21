@@ -14,9 +14,9 @@ void createRecipient(struct ns1__Recipient * recipient)
   printf("3)Inline \n");
   printf("Enter the source type:");
   scanf("%d", &l_sourceAnswer);//waits for user input
-  assingSource(l_sourceAnswer, &m_recipient.source);
+  assignSource(l_sourceAnswer, &m_recipient.source);
 
-  /// <assing the id>
+  /// <assign the id>
   int i_id;
   if(l_sourceAnswer != 3)
   {
@@ -33,41 +33,41 @@ void createRecipient(struct ns1__Recipient * recipient)
     m_recipient.recipient_USCOREhome_USCOREnumber = NULL;
     m_recipient.recipient_USCOREflat_USCOREnumber = NULL;
   }
-  /// </assing the id>
+  /// </assign the id>
 
   if(l_sourceAnswer == 3)
   {
     char * s_eliminateFreeLine;            //when using is "scanf" and "fgets" occurs
-    assingString("", &s_eliminateFreeLine);//a free line, this elminate this problem
+   assignString("", &s_eliminateFreeLine);//a free line, this elminate this problem
     free(s_eliminateFreeLine);
 
-  /// <assing the recipient name>
-    assingString("Enter the recipient's name:", &m_recipient.recipient_USCOREname);
-  /// </assing the recipient name>
+  /// <assign the recipient name>
+   assignString("Enter the recipient's name:", &m_recipient.recipient_USCOREname);
+  /// </assign the recipient name>
 
-  /// <assing the post code>
-    assingString("Enter the post code:", &m_recipient.recipient_USCOREpost_USCOREcode);
-  /// </assing the post code>
+  /// <assign the post code>
+   assignString("Enter the post code:", &m_recipient.recipient_USCOREpost_USCOREcode);
+  /// </assign the post code>
 
-  /// <assing the city>
-    assingString("Enter the city:", &m_recipient.recipient_USCOREcity);
-  /// </assing the city>
+  /// <assign the city>
+   assignString("Enter the city:", &m_recipient.recipient_USCOREcity);
+  /// </assign the city>
 
-  /// <assing the address prefix>
-    assingString("Enter the adress prefix:", &m_recipient.recipient_USCOREaddress_USCOREprefix);
-  /// </assing the address prefix>
+  /// <assign the address prefix>
+   assignString("Enter the adress prefix:", &m_recipient.recipient_USCOREaddress_USCOREprefix);
+  /// </assign the address prefix>
 
-  /// <assing the address>
-    assingString("Enter the address:", &m_recipient.recipient_USCOREaddress);
-  /// </assing the address>
+  /// <assign the address>
+   assignString("Enter the address:", &m_recipient.recipient_USCOREaddress);
+  /// </assign the address>
 
-  /// <assing the home number>
-    assingString("Enter the home number:", &m_recipient.recipient_USCOREhome_USCOREnumber);
-  /// </assing the home number>
+  /// <assign the home number>
+   assignString("Enter the home number:", &m_recipient.recipient_USCOREhome_USCOREnumber);
+  /// </assign the home number>
 
-  /// <assing the float number>
-    assingString("Enter the flat number:", &m_recipient.recipient_USCOREflat_USCOREnumber);
-  /// <assing the float number>
+  /// <assign the float number>
+    assignString("Enter the flat number:", &m_recipient.recipient_USCOREflat_USCOREnumber);
+  /// <assign the float number>
 
     m_recipient.recipient_USCOREcountry = NULL;
     m_recipient.recipient_USCOREfax_USCOREnumber = NULL;
