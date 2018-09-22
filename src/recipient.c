@@ -83,8 +83,8 @@ void createRecipient(struct ns1__Recipient * recipient)
 /// <param name = "recipeint"> Pointer to recipient </param>
 void freeRecipient(struct ns1__Recipient * recipient)
 {
-  if(recipient->id != NULL)//release type of recipient
-    free(recipient->id);
+  if((*recipient->id) != 3)
+    free(recipient->source);
 
   if(recipient->recipient_USCOREname != NULL)
     free(recipient->recipient_USCOREname);//release name
