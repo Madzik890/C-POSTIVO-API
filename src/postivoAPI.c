@@ -108,11 +108,19 @@ void postDispatch(char * login, char * password)
   else
     soap_print_fault(g_soap, stderr);//print error
 
+  if(s_filePath != NULL)
+    free(s_filePath);
+  if(s_fileTitle != NULL)
+    free(s_fileTitle);
+
+  if((*m_recipient.id) == 3)//if the recipient's ID == 3, all parameters are NULL,
+  {                         //when the memory is released, it causes a failure, this is protection
+    freeRecipient(&m_recipient);//release a recipient when parameteres != NULL
+    freeRecipient(m_arrayRecipients.__ptr[0]);//release a copy of the recipient
+  }
+
   free(m_arrayRecipients.__ptr);
   free(m_arrayDocuments.__ptr);
-  free(s_filePath);
-  free(s_fileTitle);
-  freeRecipient(&m_recipient);
   freeDocumentFile(&m_file);
 }
 

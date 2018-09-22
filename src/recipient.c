@@ -32,6 +32,8 @@ void createRecipient(struct ns1__Recipient * recipient)
     m_recipient.recipient_USCOREaddress = NULL;
     m_recipient.recipient_USCOREhome_USCOREnumber = NULL;
     m_recipient.recipient_USCOREflat_USCOREnumber = NULL;
+    m_recipient.recipient_USCOREcountry = NULL;
+    m_recipient.recipient_USCOREfax_USCOREnumber = NULL;
   }
   /// </assign the id>
 
@@ -81,13 +83,33 @@ void createRecipient(struct ns1__Recipient * recipient)
 /// <param name = "recipeint"> Pointer to recipient </param>
 void freeRecipient(struct ns1__Recipient * recipient)
 {
-  free(recipient->recipient_USCOREname);//release name
-  free(recipient->recipient_USCOREpost_USCOREcode);//release code
-  free(recipient->recipient_USCOREcity);//release code
-  free(recipient->recipient_USCOREaddress_USCOREprefix);//release addres prefix
-  free(recipient->recipient_USCOREaddress);//release address
-  free(recipient->recipient_USCOREhome_USCOREnumber);//release home number
-  free(recipient->recipient_USCOREflat_USCOREnumber);//release flat number
-  free(recipient->recipient_USCOREcountry);//release country
-  free(recipient->recipient_USCOREfax_USCOREnumber);//release fax number
+  if(recipient->id != NULL)//release type of recipient
+    free(recipient->id);
+
+  if(recipient->recipient_USCOREname != NULL)
+    free(recipient->recipient_USCOREname);//release name
+
+  if(recipient->recipient_USCOREpost_USCOREcode != NULL)
+    free(recipient->recipient_USCOREpost_USCOREcode);//release code
+
+  if(recipient->recipient_USCOREcity != NULL)
+    free(recipient->recipient_USCOREcity);//release code
+
+  if(recipient->recipient_USCOREaddress_USCOREprefix != NULL)
+    free(recipient->recipient_USCOREaddress_USCOREprefix);//release addres prefix
+
+  if(recipient->recipient_USCOREaddress != NULL)
+    free(recipient->recipient_USCOREaddress);//release address
+
+  if(recipient->recipient_USCOREhome_USCOREnumber != NULL)
+    free(recipient->recipient_USCOREhome_USCOREnumber);//release home number
+
+  if(recipient->recipient_USCOREflat_USCOREnumber != NULL)
+    free(recipient->recipient_USCOREflat_USCOREnumber);//release flat number
+
+  if(recipient->recipient_USCOREcountry != NULL)
+    free(recipient->recipient_USCOREcountry);//release country
+
+  if(recipient->recipient_USCOREfax_USCOREnumber != NULL)
+    free(recipient->recipient_USCOREfax_USCOREnumber);//release fax number
 }
