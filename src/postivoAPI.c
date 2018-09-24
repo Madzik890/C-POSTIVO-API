@@ -171,9 +171,9 @@ void postGetBalance(char * login, char * password)
     if(!strcmp(m_balanceStatus.return_->result, "OK"))//if is no error
     {
       printf("------------------------\n");//for transparency
-      printf("Account balance:%lf \n",m_balanceStatus.return_->balance);
-      printf("Account limit:%lf\n",m_balanceStatus.return_->limit);
-      if(m_balanceStatus.return_->postpaid == 0)
+      printf("Account balance:%0.2f \n",(*m_balanceStatus.return_->balance));
+      printf("Account limit:%0.2f\n",(*m_balanceStatus.return_->limit));
+      if((*m_balanceStatus.return_->postpaid) == 0)
         printf("Account type: PREPAID\n");
       else
         printf("Account type: POST-PAID\n");

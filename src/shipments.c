@@ -30,8 +30,8 @@ void printfShipments(struct ArrayOfShipments * arrayOfShipments)
     printf("Shipment the recipient city:%s\n",arrayOfShipments->__ptr[i]->recipient_USCOREcity);
     printf("Dispatch carrier:%s\n",arrayOfShipments->__ptr[i]->dispatch_USCOREcarrier);
     printf("Dispatch type:%s\n",arrayOfShipments->__ptr[i]->dispatch_USCOREtype);
-    printf("Count of shipment page:%d\n",arrayOfShipments->__ptr[i]->page_USCOREnumber[0]);
-    printf("The price of dispatch:%lf\n",arrayOfShipments->__ptr[i]->price[0]);
+    printf("Count of shipment page:%d\n",(*arrayOfShipments->__ptr[i]->page_USCOREnumber));
+    printf("The price of dispatch:%lf\n",(*arrayOfShipments->__ptr[i]->price));
     printf("Shipment status:%s\n",arrayOfShipments->__ptr[i]->status);
   }
 }
