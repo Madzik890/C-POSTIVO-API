@@ -4,17 +4,28 @@
 #include <string.h>//strcpy
 
 void helpArgv();
+void helpArgvServer();
 
 int main(int argc, char ** argv)
 {
+  loadClientOptions();
   if(argc == 1)//zero arguments
   {
-    helpArgv();
+    if(i_loadedConfig == 0)
+      helpArgv();
+    else
+      helpArgvServer();
+
     exit(1);//close
   }
+
   if(argc == 2 && (!strcmp( argv[ 1 ], "-h") || !strcmp( argv[ 1 ], "-help" ) || !strcmp( argv[ 1 ], "--help" )))
   {
-    helpArgv();
+    if(i_loadedConfig == 0)
+      helpArgv();
+    else
+      helpArgvServer();
+
     exit(1);//close
   }
   else
@@ -24,7 +35,6 @@ int main(int argc, char ** argv)
     exit(1);
   } 
 
-  loadClientOptions();
   struct userLog user = getUserLog();
   initPostivoAPI();
 
@@ -82,5 +92,17 @@ void helpArgv()
   printf("   -as              Add sender to contacts. \n");
   printf("   -vs              Verify a sender. \n");
   printf("   -rs              Remove a sender.  \n");
+}
+
+void helpArgvServer()
+{
+  printf("[WARNING] \n");
+  printf("Config file to a server has been generated. Dedicated servers support less functions. \n");
+  printf("To use with normal Web Service, delete the config file. \n");
+  printf("Usage Postivo [-gb -gB -getbalance]\n");
+
+  printf("\nOptions: \n");
+  printf("   -gb              Get accout balance. \n");
+  printf("   -ccf             Create a config file to make connection with other servers. \n");
 }
 

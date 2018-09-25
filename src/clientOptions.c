@@ -6,6 +6,10 @@
 
 #define CONFIG_NAME "clientConfig.txt"
 
+/// <global instances>
+int i_loadedConfig = 0;
+/// </global instances>
+
 void createOptionsFile();
 void defaultOptions();
 
@@ -45,6 +49,7 @@ void loadClientOptions()
       s_buffer[strlen(s_buffer) - 1] = '\0'; //delete a newline sign
       setOptionsParam(s_buffer);
     }
+    i_loadedConfig = 1;
     fclose(m_file);
   }
 }
