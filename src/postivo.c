@@ -102,6 +102,7 @@ void helpArgvServer()
   printf("Usage Postivo [-gb -gB -getbalance]\n");
 
   printf("\nOptions: \n");
+  printf("   -d               Dispatch shipment. \n");
   printf("   -gb              Get accout balance. \n");
   printf("   -ccf             Create a config file to make connection with other servers. \n");
 }

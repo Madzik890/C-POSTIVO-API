@@ -20,6 +20,7 @@ void printfShipments(struct ArrayOfShipments * arrayOfShipments)
 {
   for(int i = 0; i < arrayOfShipments->__size; i++)
   {
+    printf("------------- \n");
     printf("Shipment %d'th\n", i);
     printf("Shipment id:%s\n", (*arrayOfShipments->__ptr[i]).id);
     printf("Shipment the recipient name:%s\n", (*arrayOfShipments->__ptr[i]).recipient_USCOREname);
@@ -31,7 +32,7 @@ void printfShipments(struct ArrayOfShipments * arrayOfShipments)
     printf("Dispatch carrier:%s\n",(*arrayOfShipments->__ptr[i]).dispatch_USCOREcarrier);
     printf("Dispatch type:%s\n",(*arrayOfShipments->__ptr[i]).dispatch_USCOREtype);
     printf("Count of shipment page:%d\n",(*arrayOfShipments->__ptr[i]->page_USCOREnumber));
-    printf("The price of dispatch:%lf\n",(*arrayOfShipments->__ptr[i]->price));
+    printf("The price of dispatch:%0.2f\n",(*arrayOfShipments->__ptr[i]->price));
     printf("Shipment status:%s\n",(*arrayOfShipments->__ptr[i]).status);
   }
 }
