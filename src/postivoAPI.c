@@ -216,13 +216,14 @@ void postGetPrice(char * login, char * password)
 
 
   struct ns2__getPriceResponse m_priceStatus;
-  if(soap_call_ns2__getPrice(g_soap, NULL, NULL, login, password, "1", &m_arrayDocuments, &m_arrayRecipients, 0, &m_priceStatus) == SOAP_OK)
+  if(soap_call_ns2__getPrice(g_soap, s_endAction, s_soapAction, login, password, "1", &m_arrayDocuments, &m_arrayRecipients, 0, &m_priceStatus) == SOAP_OK)
   {
     if(!strcmp(m_priceStatus.return_->result, "OK"))//if is no error
     {
       printf("--------------------------\n");//for transparency
       printf("Successfull\n");
       printf("The status has been received.\n");
+      printfShipmentsPrices(m_priceStatus.return_->shipments_USCOREprice);
     }
     else
       printErrorMessage(m_priceStatus.return_->result_USCOREdescription);

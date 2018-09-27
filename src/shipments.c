@@ -21,6 +21,7 @@ void printfShipments(struct ArrayOfShipments * arrayOfShipments)
   for(int i = 0; i < arrayOfShipments->__size; i++)
   {
     printf("------------- \n");
+    printf("Accepted shipments: \n");
     printf("Shipment %d'th\n", i);
     printf("Shipment id:%s\n", (*arrayOfShipments->__ptr[i]).id);
     printf("Shipment the recipient name:%s\n", (*arrayOfShipments->__ptr[i]).recipient_USCOREname);
@@ -34,5 +35,27 @@ void printfShipments(struct ArrayOfShipments * arrayOfShipments)
     printf("Count of shipment page:%d\n",(*arrayOfShipments->__ptr[i]->page_USCOREnumber));
     printf("The price of dispatch:%0.2f\n",(*arrayOfShipments->__ptr[i]->price));
     printf("Shipment status:%s\n",(*arrayOfShipments->__ptr[i]).status);
+    printf("----------------- \n");
+  }
+}
+
+void printfShipmentsPrices(struct ArrayOfShipmentsPrice * arrayOfShipments)
+{
+  for(int i = 0; i < arrayOfShipments->__size; i++)
+  {
+    printf("------------- \n");
+    printf("Prices of shipments: \n");
+    printf("Shipment %d'th\n", i);
+    printf("Shipment the recipient name:%s\n", (*arrayOfShipments->__ptr[i]).recipient_USCOREname);
+    printf("Shipment the recipient address:%s\n",(*arrayOfShipments->__ptr[i]).recipient_USCOREaddress);
+    printf("Shipment the recipient home number:%s\n",(*arrayOfShipments->__ptr[i]).recipient_USCOREhome_USCOREnumber);
+    printf("Shipment the recipient flat number:%s\n",(*arrayOfShipments->__ptr[i]).recipient_USCOREhome_USCOREnumber);
+    printf("Shipment the recipient post number:%s\n",(*arrayOfShipments->__ptr[i]).recipient_USCOREpost_USCOREcode);
+    printf("Shipment the recipient city:%s\n",(*arrayOfShipments->__ptr[i]).recipient_USCOREcity);
+    printf("Dispatch carrier:%s\n",(*arrayOfShipments->__ptr[i]).dispatch_USCOREcarrier);
+    printf("Dispatch type:%s\n",(*arrayOfShipments->__ptr[i]).dispatch_USCOREtype);
+    printf("Count of shipment page:%d\n",(*arrayOfShipments->__ptr[i]->page_USCOREnumber));
+    printf("The price of dispatch:%0.2f\n",(*arrayOfShipments->__ptr[i]->price));
+     printf("------------------------- \n");
   }
 }

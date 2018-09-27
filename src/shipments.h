@@ -5,5 +5,6 @@
 
 void getShipmentID(char ** shipmentID);
 void printfShipments(struct ArrayOfShipments * arrayOfShipments);
+void printfShipmentsPrices(struct ArrayOfShipmentsPrice * arrayOfShipments);
 
 #endif
