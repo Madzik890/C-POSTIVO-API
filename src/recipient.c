@@ -1,5 +1,6 @@
 #include "recipient.h"
 #include "stringMan.h"
+#include "clientOptions.h"
 
 /// <summary>
 /// Creates the recipient from user inputs.
@@ -9,12 +10,20 @@ void createRecipient(struct ns1__Recipient * recipient)
 {
   struct ns1__Recipient m_recipient;
   int l_sourceAnswer = 0;
-  printf("1)Group\n");
-  printf("2)Book \n");
-  printf("3)Inline \n");
-  printf("Enter the source type:");
-  scanf("%d", &l_sourceAnswer);//waits for user input
-  assignSource(l_sourceAnswer, &m_recipient.source);
+  if(i_loadedConfig == 0)
+  {
+    printf("1)Group\n");
+    printf("2)Book \n");
+    printf("3)Inline \n");
+    printf("Enter the source type:");
+    scanf("%d", &l_sourceAnswer);//waits for user input
+    assignSource(l_sourceAnswer, &m_recipient.source);
+  }
+  else
+  {
+    l_sourceAnswer = 3;
+    assignSource(l_sourceAnswer, &m_recipient.source);
+  }
 
   /// <assign the id>
   int i_id;

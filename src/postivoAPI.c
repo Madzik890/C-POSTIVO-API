@@ -212,7 +212,7 @@ void postGetPrice(char * login, char * password)
   struct ArrayOfRecipients m_arrayRecipients;
   m_arrayRecipients.__ptr = calloc(1,sizeof(struct ns1__Recipient*));//allocating the memory to only a one recipient
   m_arrayRecipients.__size = 1;//set size the array to only one
-  m_arrayRecipients.__ptr[1] = &m_recipient;
+  m_arrayRecipients.__ptr[0] = &m_recipient;
 
 
   struct ns2__getPriceResponse m_priceStatus;
@@ -286,6 +286,7 @@ void postGetSenders(char * login, char * password)
       printf("--------------------------\n");//for transparency
       printf("Successfull\n");
       printf("The status has been received.\n");
+      printf("%d \n", m_sendersStatus.return_->senders->__size);
       printfSenders(m_sendersStatus.return_->senders);
     }
     else
