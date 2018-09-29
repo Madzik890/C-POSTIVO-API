@@ -106,6 +106,7 @@ void helpArgvServer()
   printf("   -gb              Get accout balance. \n");
   printf("   -gp              Get price of shipment. \n");
   printf("   -ccf             Create a config file to make connection with other servers. \n");
+  printf("   -gs              Get list of senders. \n");
   printf("   -as              Add sender to contacts. \n");
 }
 
