@@ -43,7 +43,7 @@ void initPostivoAPI()
   soap_set_imode(g_soap, SOAP_C_UTFSTRING);//input
   soap_set_omode(g_soap, SOAP_C_UTFSTRING);//output
 
-  if (soap_ssl_server_context(g_soap, SOAP_SSL_NO_AUTHENTICATION, NULL, NULL, NULL, NULL, NULL, NULL, NULL))//init SSL with no AUTHENTICATION
+  if (soap_ssl_client_context(g_soap, SOAP_SSL_NO_AUTHENTICATION, NULL, NULL, NULL, NULL, NULL))//init SSL with no AUTHENTICATION
   {
     soap_print_fault(g_soap, stderr);//print error
     exit(1);//exit because without ssl, cannot connect to HTTPS
