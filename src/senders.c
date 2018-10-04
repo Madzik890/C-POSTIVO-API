@@ -61,6 +61,40 @@ void createSender(struct ns1__SenderData * sender)
 }
 
 /// <summary>
+/// Releases memory from user data.
+/// </summary>
+/// <param name = "sender"> Pointer to sender </param>
+void freeSender(struct ns1__SenderData * sender)
+{
+  if(sender->sender_USCOREname != NULL)
+    free(sender->sender_USCOREname);//release name
+
+  if(sender->sender_USCOREpost_USCOREcode != NULL)
+    free(sender->sender_USCOREpost_USCOREcode);//release code
+
+  if(sender->sender_USCOREcity != NULL)
+    free(sender->sender_USCOREcity);//release code
+
+  if(sender->sender_USCOREaddress_USCOREprefix != NULL)
+    free(sender->sender_USCOREaddress_USCOREprefix);//release addres prefix
+
+  if(sender->sender_USCOREaddress != NULL)
+    free(sender->sender_USCOREaddress);//release address
+
+  if(sender->sender_USCOREhome_USCOREnumber != NULL)
+    free(sender->sender_USCOREhome_USCOREnumber);//release home number
+
+  if(sender->sender_USCOREflat_USCOREnumber != NULL)
+    free(sender->sender_USCOREflat_USCOREnumber);//release flat number
+
+  if(sender->sender_USCOREcountry != NULL)
+    free(sender->sender_USCOREcountry);//release country
+
+  if(sender->sender_USCOREfax_USCOREnumber != NULL)
+    free(sender->sender_USCOREfax_USCOREnumber);//release fax number
+}
+
+/// <summary>
 /// Prints a single sender.
 /// </summary>
 /// <param name = "sender"> Pointer to a sender </param>

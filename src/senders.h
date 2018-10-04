@@ -5,5 +5,6 @@
 
 void createSender(struct ns1__SenderData * sender);
 void printfSenders(struct ArrayOfSenders * arrayOfSenders);
+void freeSender(struct ns1__SenderData * sender);
 
 #endif

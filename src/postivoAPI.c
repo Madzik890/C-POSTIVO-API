@@ -376,6 +376,8 @@ void postAddSender(char * login, char * password)
   }
   else
     soap_print_fault(g_soap, stderr);
+  
+  freeSender(&m_senderData);//release sender
 }
 
 /// <summary>
