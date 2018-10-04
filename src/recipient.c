@@ -92,6 +92,9 @@ void createRecipient(struct ns1__Recipient * recipient)
 /// <param name = "recipeint"> Pointer to recipient </param>
 void freeRecipient(struct ns1__Recipient * recipient)
 {
+  if(recipient->source != NULL)
+    free(recipient->source);//release source
+
   if(recipient->recipient_USCOREname != NULL)
     free(recipient->recipient_USCOREname);//release name
 
